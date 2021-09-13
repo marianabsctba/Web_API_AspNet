@@ -1,0 +1,138 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do usuário</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserLastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserLastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfRegister)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfRegister)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserBirthday)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserBirthday)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserLegalStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserLegalStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserAddressDetails)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserAddressDetails)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeInDonation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QuantityDonations)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QuantityDonations)
+        </dd>
+    </dl>
+    
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().DonationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().DateOfRegister)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().CourierPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().NewOrOld)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().DonationZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations.First().User)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+    <tbody>
+    @foreach (var item in Model.Donations) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfRegister)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourierPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewOrOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

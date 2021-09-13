@@ -1,0 +1,73 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar novo usuário</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserLastName" class="control-label"></label>
+                <input asp-for="UserLastName" class="form-control" />
+                <span asp-validation-for="UserLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfRegister" class="control-label"></label>
+                <input asp-for="DateOfRegister" class="form-control" />
+                <span asp-validation-for="DateOfRegister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserBirthday" class="control-label"></label>
+                <input asp-for="UserBirthday" class="form-control" />
+                <span asp-validation-for="UserBirthday" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="UserLegalStatus" /> @Html.DisplayNameFor(model => model.UserLegalStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserAddress" class="control-label"></label>
+                <input asp-for="UserAddress" class="form-control" />
+                <span asp-validation-for="UserAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserAddressDetails" class="control-label"></label>
+                <input asp-for="UserAddressDetails" class="form-control" />
+                <span asp-validation-for="UserAddressDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cpf" class="control-label"></label>
+                <input asp-for="Cpf" class="form-control" />
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeInDonation" class="control-label"></label>
+                <input asp-for="UserTimeInDonation" class="form-control" />
+                <span asp-validation-for="UserTimeInDonation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

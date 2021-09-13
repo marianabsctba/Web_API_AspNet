@@ -1,0 +1,108 @@
+﻿@model UserIndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Index">
+    <label>Busca:</label>
+    <input type="text" asp-for="@Model.Search" />
+    <br />
+    <label>Ordenação por nome do usuário:</label>
+    <select asp-for="OrderAscendant">
+        <option value="@true">Ascendente</option>
+        <option value="@false">Descendente</option>
+    </select>
+    <br />
+    <button>Pesquisar</button>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@{
+    if (Model.Users == null || !Model.Users.Any())
+    {
+        <p>Nenhum usuário cadastrado!</p>
+        return;
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().DateOfRegister)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserBirthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserLegalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserAddressDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().UserTimeInDonation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.First().QuantityDonations)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Users) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfRegister)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserBirthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLegalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAddressDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserTimeInDonation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityDonations)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

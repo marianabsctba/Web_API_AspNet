@@ -1,0 +1,68 @@
+﻿@model DonationViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar nova doação</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DonationName" class="control-label">Nome da doação</label>
+                <input asp-for="DonationName" class="form-control" />
+                <span asp-validation-for="DonationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Descrição</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfRegister" class="control-label">Data de Registro</label>
+                <input asp-for="DateOfRegister" class="form-control" />
+                <span asp-validation-for="DateOfRegister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourierPrice" class="control-label">Valor do frete</label>
+                <input asp-for="CourierPrice" class="form-control" />
+                <span asp-validation-for="CourierPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Quantidade</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="NewOrOld" /> @Html.DisplayNameFor(model => model.NewOrOld)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonationZipCode" class="control-label">CEP</label>
+                <input asp-for="DonationZipCode" class="form-control" />
+                <span asp-validation-for="DonationZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Usuário</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users">
+                    <option selected value="">Escolha o usuário</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
